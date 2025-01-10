@@ -1,10 +1,4 @@
-# compte rendu réunion
-- Le système de sort procédurale en l'état n'est pas viable.
-- Les runes de type électrique et eaux sont difficilement gérable.
-- Voir pour soit abandonné le procédurale ou changer le système vers un système plus basique
-- Revoir les principe du jeu (un jeu d'aventure avec histoire)
-
-## On va partir sur un jeu aventure Solo
+# Jeu Solo
 ### type et principe de jeu
 jeu dans le type power level (on débute comme un simple personnage et de plus en plus en acquière des pouvoirs destructeurs). 
 Le jeu est semi-ouvert avec des zones plus ou moins grande et plus ou moins fournis

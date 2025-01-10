@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpqwq4i065a0i"]
+
+[ext_resource type="PackedScene" uid="uid://dx5yq34a2wt15" path="res://Assets/3d_models/Character/Personnage_Godot.glb" id="1_fjsd7"]
+
+[node name="Player" instance=ExtResource("1_fjsd7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.123543)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(-3.18157e-07, -2.47499e-07, 1.33403)
+bones/1/rotation = Quaternion(0.672692, -1.09323e-07, 3.73956e-08, 0.739923)
+bones/2/rotation = Quaternion(0.0889262, 1.50194e-07, 2.37691e-08, 0.996038)
+bones/3/rotation = Quaternion(0.0856282, -9.65414e-08, 1.5154e-08, 0.996327)
+bones/4/rotation = Quaternion(-0.79788, -0.134989, 0.587109, -0.0216665)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.21394, -0.671056, 0.325952, 0.63061)
+bones/6/rotation = Quaternion(0.839806, -0.243989, 0.483661, -0.0355878)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.203043, 0.677001, -0.309349, 0.636197)
+bones/8/rotation = Quaternion(1.52218e-07, 0.152533, 0.988298, -1.45205e-06)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(1.30723e-06, 0.976979, -0.213336, 5.97651e-06)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.673907, 3.88231e-07, 1.46881e-06, 0.738816)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(1.4183e-07, 0.0436518, 0.999047, 1.8027e-06)
+bones/12/rotation = Quaternion(-1.57229e-06, 0.965367, -0.260897, -6.53928e-06)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.781786, 7.31534e-07, -3.55143e-06, 0.623547)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(0.474366, 0.693628, 1.73215)
+bones/15/position = Vector3(0.299358, -0.118237, 1.33759)
+bones/15/rotation = Quaternion(-0.506752, -0.0168137, 0.861871, -0.00988582)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0.0800732, -0.118005, 0.669868)
+bones/17/position = Vector3(0.0800731, -0.344754, 1.02035)
+bones/17/rotation = Quaternion(-1.19209e-07, 1.96765e-16, 1, -2.17554e-23)
+bones/18/position = Vector3(-0.102058, 0.0594601, 0.669868)
+bones/19/position = Vector3(-0.474367, 0.358288, 1.73215)
+bones/20/position = Vector3(-0.33595, 0.00251283, 1.32707)
+bones/20/rotation = Quaternion(-0.506753, -0.0168137, 0.861871, -0.00988585)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-0.102058, -0.344754, 1.02035)

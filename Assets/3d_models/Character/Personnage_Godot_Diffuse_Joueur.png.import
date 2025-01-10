@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b5isa42uycv1b"
+path.s3tc="res://.godot/imported/Personnage_Godot_Diffuse_Joueur.png-27d3921455b3561f9bb2b7d893c3c392.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "25b678b9bfe5c528190ac318eb3623d4"
+}
+
+[deps]
+
+source_file="res://Assets/3d_models/Character/Personnage_Godot_Diffuse_Joueur.png"
+dest_files=["res://.godot/imported/Personnage_Godot_Diffuse_Joueur.png-27d3921455b3561f9bb2b7d893c3c392.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

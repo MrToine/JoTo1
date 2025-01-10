@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ca8lii121g5y5"]
+
+[ext_resource type="Shader" path="res://Assets/outdoor_environment/sky/sky.gdshader" id="1_6abwl"]
+[ext_resource type="Texture2D" uid="uid://c68f1o2jg8s50" path="res://Assets/outdoor_environment/textures/noise.jpg" id="2_fxfdh"]
+
+[resource]
+shader = ExtResource("1_6abwl")
+shader_parameter/top_color = Color(0, 0.568627, 0.941176, 1)
+shader_parameter/bottom_color = Color(0.318216, 0.678248, 0.999999, 1)
+shader_parameter/sun_scatter = Color(0, 0.429481, 0.718906, 1)
+shader_parameter/star_stength = 0.0
+shader_parameter/clouds_tint = Color(0.912289, 0.912289, 0.912289, 1)
+shader_parameter/clouds_sampler = ExtResource("2_fxfdh")

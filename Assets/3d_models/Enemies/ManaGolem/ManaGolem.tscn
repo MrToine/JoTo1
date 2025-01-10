@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://0qmu46vy6uka"]
+
+[ext_resource type="PackedScene" uid="uid://dyfs2e10bfxpb" path="res://Assets/3d_models/Enemies/ManaGolem/Mana_Golem.glb" id="1_xu1lv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbdb5"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+
+[node name="Mana_Golem" parent="." instance=ExtResource("1_xu1lv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.173486, 0)
+shape = SubResource("BoxShape3D_cbdb5")

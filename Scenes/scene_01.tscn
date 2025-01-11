@@ -55,39 +55,45 @@ directional_shadow_split_1 = 0.06
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 40.0
 
-[node name="PlayerCtrl" parent="." instance=ExtResource("1_4v46x")]
-transform = Transform3D(-0.834358, 0, 0.551224, 0, 1, 0, -0.551224, 0, -0.834358, -0.441503, 0.672082, -0.800442)
+[node name="PlayerCtrl" parent="." node_paths=PackedStringArray("cameraPivot", "camera", "animationPlayer") instance=ExtResource("1_4v46x")]
+transform = Transform3D(-0.834358, 0, 0.551224, 0, 1, 0, -0.551224, 0, -0.834358, -1.36355, 0.801093, -0.998159)
 mouseSensivity = 0.2
-speed = 1.0
+cameraPivot = NodePath("CamPivot")
+camera = NodePath("CamPivot/SpringArm3D/Camera3D")
+speed = 0.6
 extraSpeed = 1.0
+acceleration = 1.0
+jumpForce = 5.0
+animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 
 [node name="CollisionShape3D" parent="PlayerCtrl" index="1"]
-transform = Transform3D(0.856501, 0, 0.516145, 0, 1, 0, -0.516145, 0, 0.856501, 0.00412202, 0.101453, 0)
+transform = Transform3D(0.856501, 0, 0.516145, 0, 1, 0, -0.516145, 0, 0.856501, 0.0041219, 0.0221751, -1.78814e-07)
+
+[node name="Area3D" parent="PlayerCtrl" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113753, 0)
 
 [node name="PlayerBase" parent="PlayerCtrl" index="3"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.96046e-08, -0.111534, 0.123543)
 
 [node name="Skeleton3D" parent="PlayerCtrl/PlayerBase/Armature" index="0"]
-bones/1/position = Vector3(-3.23943e-07, -1.78818e-07, 1.35873)
-bones/1/rotation = Quaternion(0.672692, -1.10529e-07, 2.64082e-08, 0.739923)
-bones/2/rotation = Quaternion(0.0889262, 1.40966e-07, 2.53e-08, 0.996038)
-bones/3/rotation = Quaternion(0.0856282, -8.55902e-08, 1.70626e-08, 0.996327)
-bones/4/rotation = Quaternion(-0.603884, -0.360258, 0.620982, -0.346294)
-bones/5/rotation = Quaternion(0.0387857, -0.726904, 0.0590924, 0.683092)
-bones/6/rotation = Quaternion(0.603884, -0.360258, 0.620982, 0.346294)
-bones/7/rotation = Quaternion(0.0387857, 0.726903, -0.0590924, 0.683092)
-bones/8/rotation = Quaternion(-5.07221e-06, -0.0131968, 0.999913, -9.32052e-08)
-bones/9/rotation = Quaternion(4.07555e-07, 0.997795, -0.0663738, 6.12845e-06)
-bones/10/rotation = Quaternion(-0.68312, -5.60521e-09, 1.40107e-06, 0.730306)
-bones/11/rotation = Quaternion(5.43106e-06, -0.0131968, 0.999913, 4.16073e-08)
-bones/12/rotation = Quaternion(-3.99754e-07, 0.997795, -0.0663738, -6.73426e-06)
-bones/13/rotation = Quaternion(-0.68312, -3.05745e-08, -1.85923e-06, 0.730306)
-bones/14/position = Vector3(0.474366, 0.358288, 1.73215)
-bones/15/position = Vector3(0.713292, 0.00251272, 1.59921)
-bones/16/position = Vector3(0.0800732, -4.27464e-09, 0.669867)
-bones/17/rotation = Quaternion(-1.19209e-07, 1.92179e-16, 1, -8.99301e-29)
-bones/18/position = Vector3(-0.102058, 5.43789e-09, 0.669867)
-bones/20/position = Vector3(-0.713293, 0.00251285, 1.59921)
+bones/1/position = Vector3(-3.18157e-07, -2.47499e-07, 1.33403)
+bones/2/rotation = Quaternion(0.0889262, 1.50194e-07, 2.37691e-08, 0.996038)
+bones/3/rotation = Quaternion(0.0856282, -9.65414e-08, 1.5154e-08, 0.996327)
+bones/4/rotation = Quaternion(-0.79788, -0.134989, 0.587109, -0.0216665)
+bones/5/rotation = Quaternion(0.21394, -0.671056, 0.325952, 0.63061)
+bones/6/rotation = Quaternion(0.839806, -0.243989, 0.483661, -0.0355878)
+bones/7/rotation = Quaternion(0.203043, 0.677001, -0.309349, 0.636197)
+bones/8/rotation = Quaternion(1.52218e-07, 0.152533, 0.988298, -1.45205e-06)
+bones/9/rotation = Quaternion(1.30723e-06, 0.976979, -0.213336, 5.97651e-06)
+bones/10/rotation = Quaternion(-0.673907, 3.88231e-07, 1.46881e-06, 0.738816)
+bones/11/rotation = Quaternion(1.4183e-07, 0.0436518, 0.999047, 1.8027e-06)
+bones/12/rotation = Quaternion(-1.57229e-06, 0.965367, -0.260897, -6.53928e-06)
+bones/13/rotation = Quaternion(-0.781786, 7.31534e-07, -3.55143e-06, 0.623547)
+bones/14/position = Vector3(0.474366, 0.693628, 1.73215)
+bones/15/position = Vector3(0.299358, -0.118237, 1.33759)
+bones/16/position = Vector3(0.0800732, -0.118005, 0.669868)
+bones/18/position = Vector3(-0.102058, 0.0594601, 0.669868)
+bones/20/position = Vector3(-0.33595, 0.00251283, 1.32707)
 
 [node name="ManaGolem" parent="." instance=ExtResource("5_ncxvy")]
 transform = Transform3D(0.769065, 0, -0.639171, 0, 1, 0, 0.639171, 0, 0.769065, -2.00568, 0.542956, 1.32425)

@@ -38,7 +38,6 @@ shape = SubResource("BoxShape3D_dksu4")
 
 [node name="Skeleton3D" parent="PlayerBase/Armature" index="0"]
 bones/1/position = Vector3(-3.23945e-07, -2.48407e-07, 1.35873)
-bones/1/rotation = Quaternion(0.672692, -1.09323e-07, 3.73956e-08, 0.739923)
 bones/2/rotation = Quaternion(0.0886081, -0.0845103, -0.000512996, 0.992475)
 bones/3/rotation = Quaternion(0.0856282, -1.04605e-07, 1.63393e-08, 0.996327)
 bones/4/rotation = Quaternion(-0.782573, -0.120892, 0.59606, 0.132955)
@@ -53,14 +52,9 @@ bones/12/rotation = Quaternion(-5.75445e-07, 0.995387, -0.09594, -6.72073e-06)
 bones/13/rotation = Quaternion(-0.659403, 7.979e-07, -1.2496e-06, 0.75179)
 bones/14/position = Vector3(0.346298, 0.358288, 1.69556)
 bones/15/position = Vector3(0.233038, 0.167171, 1.32707)
-bones/15/rotation = Quaternion(-0.506752, -0.0168137, 0.861871, -0.00988582)
 bones/16/position = Vector3(0.0800731, -0.171519, 0.880265)
-bones/17/position = Vector3(0.0800731, -0.344754, 1.02035)
-bones/17/rotation = Quaternion(-1.19209e-07, 1.96765e-16, 1, -2.17554e-23)
 bones/18/position = Vector3(-0.102058, -0.02973, 0.672154)
 bones/19/position = Vector3(-0.385177, 0.358288, 1.70928)
 bones/20/position = Vector3(-0.265055, -0.175867, 1.34308)
-bones/20/rotation = Quaternion(-0.506753, -0.0168137, 0.861871, -0.00988585)
-bones/21/position = Vector3(-0.102058, -0.344754, 1.02035)
 
 [editable path="PlayerBase"]

@@ -1,21 +1,26 @@
 using Godot;
 using System;
 
-// Compétence de type Feu qui inflige des dégâts de feu à la cible
+// Compétence de type Feu
 // Hérite de la classe de base Skill
 public class FireSkill: Skill {
-    public FireSkill(): base(
-        0,
-        "FireBall",
-        "Une boule de feu",
+    public FireSkill(
+        int daysForUnlock,
+        string name,
+        string description,
+        string element,
+        string effect,
+        float scope,
+        int degats,
+        int countDown
+    ): base(
+        daysForUnlock,
+        name,
+        description,
         "Fire",
-        "Inflige des dégâts de feu",
-        1.0f,
-        10,
-        3
+        effect,
+        scope,
+        degats,
+        countDown
     ) {}
-
-    public override void ApplyEffect(Player player) {
-        GD.Print("On fait un barbecue !");
-    }
 }

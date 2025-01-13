@@ -3,30 +3,39 @@ using System;
 
 // Classe abstraite représentant une compétence dans le jeu.
 // Sert de base pour toutes les compétences spécifiques.
-public abstract class Skill {
+public abstract partial class Skill : Node3D 
+{
     // Nombre de jours nécessaires pour débloquer la compétence
-    [Export] public int DaysForUnlock { get; private set; }
+    [Export (PropertyHint.Range, "0,100,1")] 
+    public int DaysForUnlock { get; set; }
 
     // Nom de la compétence
-    [Export] public string Name { get; private set; }
+    [Export] 
+    public new string Name { get; set; }
 
     // Description détaillée de la compétence
-    [Export] public string Description { get; private set; }
+    [Export (PropertyHint.MultilineText)] 
+    public string Description { get; set; }
 
     // Élément associé à la compétence (Feu, Eau, etc.)
-    [Export] public string Element { get; private set; }
+    [Export] 
+    public string Element { get; set; }
 
     // Description de l'effet de la compétence
-    [Export] public string Effect { get; private set; }
+    [Export (PropertyHint.MultilineText)] 
+    public string Effect { get; set; }
 
     // Portée de la compétence
-    [Export] public float Scope { get; private set; }
+    [Export (PropertyHint.Range, "0.1,10.0")] 
+    public float Scope { get; set; }
 
     // Points de dégâts infligés par la compétence
-    [Export] public int Degats { get; private set; }
+    [Export (PropertyHint.Range, "0,100")] 
+    public int Degats { get; set; }
 
     // Temps de recharge de la compétence en tours
-    [Export] public int CountDown { get; private set; }
+    [Export (PropertyHint.Range, "0,10")] 
+    public float CountDown { get; set; }
 
     public Skill(
         int daysForUnlock,
@@ -36,7 +45,7 @@ public abstract class Skill {
         string effect,
         float scope,
         int degats,
-        int countDown
+        float countDown
     ) {
         DaysForUnlock = daysForUnlock;
         Name = name;

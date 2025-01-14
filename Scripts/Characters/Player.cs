@@ -135,7 +135,6 @@ public partial class Player : Character
 
 		/* =================================================== */
 
-
 		direction = direction.Normalized();
 
 		float accel = IsOnFloor() ? this.acceleration : this.airAcceleration;

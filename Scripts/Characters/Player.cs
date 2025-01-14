@@ -89,11 +89,11 @@ public partial class Player : Character
 			Attack();
 		}
 
-		// if(Input.IsActionPressed("run")) {
-		// 	this.extraSpeed = 3f;
-		// }else{
-		// 	this.extraSpeed = 1f;
-		// }
+		if(Input.IsActionPressed("run")) {
+			this.extraSpeed = 3f;
+		}else{
+			this.extraSpeed = 1f;
+		}
 
 		direction = direction.Normalized();
 

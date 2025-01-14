@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Player : Character
 {
@@ -29,12 +30,15 @@ public partial class Player : Character
 	
 	private string currentAnimation = "";
 
+	private new Vector3 self_position;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		/* Récupérer le noeud Camera3D et le noeud Node3D associé à la caméra au lancement du jeu */
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		animationPlayer.Play("Inactif");
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,6 +70,7 @@ public partial class Player : Character
 
 	public override void _PhysicsProcess(double delta)
 	{
+		self_position = GlobalTransform.Origin;
 		HandleMovement(delta);
 	}
 
@@ -95,6 +100,41 @@ public partial class Player : Character
 			this.extraSpeed = 1f;
 		}
 
+		/********************************************************
+		*		  												*
+		*		TOUCHES DESTINÉES AU GODMOD ET AUX TESTS		*
+		*														*
+		********************************************************/
+
+		if(Input.IsActionJustPressed("GMsave")) {
+			// On fait appel à la méthode SaveGame de la classe Data pour sauvegarder les données du joueur
+			GD.Print("Sauvegarde en cours...");
+			Data.SaveGame(new GameData {
+				PlayerPosition = self_position,
+				Inventory = new List<string> { "Potion de vie"},
+				Skills = new List<string> { "Boule de feu", "Gelure" },
+				LifePoint = 100,
+				MaxLifePoint = 100,
+				AttackPoint = 10,
+				DefensePoint = 5,
+				Day = 1
+			});
+		}
+
+		if(Input.IsActionJustPressed("GMload")) {
+			// On fait appel à la méthode LoadGame de la classe Data pour charger les données du joueur
+			GD.Print("Chargement en cours...");
+			var gameData = Data.LoadGame();
+			if(gameData != null) {
+				self_position = gameData.PlayerPosition;
+				// On téléporte le joueur à la position sauvegardée
+				GlobalTransform = new Transform3D(Basis.Identity, self_position);
+				GD.Print("Position du joueur : ", self_position);
+			}
+		}
+
+		/* =================================================== */
+
 		direction = direction.Normalized();
 
 		float accel = IsOnFloor() ? this.acceleration : this.airAcceleration;
@@ -109,10 +149,6 @@ public partial class Player : Character
 			} else {
 				yVelocity = Mathf.Clamp(yVelocity - this.gravity, -this.maxTerminalVelocity, this.maxTerminalVelocity);
 			}
-		}
-
-		if(Input.IsActionJustPressed("jump") && IsOnFloor()) {
-			yVelocity = this.jumpForce;
 		}
 
 		velocity.Y = yVelocity;

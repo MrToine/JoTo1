@@ -1,5 +1,6 @@
 - Pas de mana, simplement des cool down plus ou moins longs pour chaque sort.
 - 4 éléments pour le héros, 1 pour les ennemies
+- ATH avec 4 slot de sorts (dont 4 de plus si il a les bonnes combinaisons de sorts)
 
 Les éléments :
 - Le feu ( offensif)
@@ -15,6 +16,8 @@ Comme par exemple "aura du phénix" Qui fais des dégâts aux ennemies proche to
 
 Donc finalement plus le joueurs progressera plus les sort deviendrons multi-élémentaire.
 
+<span style="color:orange;font-weight:800">Quand le joueur ajoute 2 sorts d'élements différents en particulier dans sons deck, le joueur à la possibilité de débloqué un sort spécial qui mélange les effet et en fait un sort plus puissant.</span>
+
 Idée de sorts :
 
 **<span style="color:red">Feu</span>** : 
@@ -27,4 +30,4 @@ Idée de sorts :
 - Exosquelette sylphide : Un sort complexe mélangeant le vent et la terre. ¨Il sert principalement a réduire les dégâts, mais il permet aussi au joueur d'esquiver (avec un cool down et une touche spécifique) visuellement le joueurs serait recouvert de quelques morceau d'armure tenu grâce au vent
 **<span style="color:green">Vent</span>** : 
 - Repli aérien : simple sort d'esquive vers la direction dans la quelle veux se diriger le joueur
-- Zéphir tellurique : Sort complexe mélangeant le vent et la terre. Le joueurs d'un coup de pied fait sortir des morceau de roche du sol, puis avec l'aide du vent les soulever et les projeter sur l'ennemi.
+- Zéphyr tellurique : Sort complexe mélangeant le vent et la terre. Le joueurs d'un coup de pied fait sortir des morceau de roche du sol, puis avec l'aide du vent les soulever et les projeter sur l'ennemi.

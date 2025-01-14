@@ -32,6 +32,8 @@ public partial class Player : Character
 
 	private new Vector3 self_position;
 
+	private Item currentItem;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -100,6 +102,10 @@ public partial class Player : Character
 			this.extraSpeed = 1f;
 		}
 
+		if(Input.IsActionJustPressed("interact")){
+			InteractWithObject();
+		}
+
 		/********************************************************
 		*		  												*
 		*		TOUCHES DESTINÉES AU GODMOD ET AUX TESTS		*
@@ -111,7 +117,6 @@ public partial class Player : Character
 			GD.Print("Sauvegarde en cours...");
 			Data.SaveGame(new GameData {
 				PlayerPosition = self_position,
-				Inventory = new List<string> { "Potion de vie"},
 				Skills = new List<string> { "Boule de feu", "Gelure" },
 				LifePoint = 100,
 				MaxLifePoint = 100,
@@ -202,5 +207,23 @@ public partial class Player : Character
 		// Définit la vitesse de l'animation
 		animationPlayer.SpeedScale = animationSpeed;
 
+	}
+
+	private void InteractWithObject() {
+		if(currentItem != null) {
+			currentItem.Interact();
+		}
+	}
+
+	public void SetCurrentItem(Item item) {
+		// Permet de définir l'objet actuellement en interaction
+		// pour pouvoir interagir avec lui en appuyant sur une touche
+		currentItem = item;
+	}
+
+	public void ClearCurrentItem() {
+		// Permet de supprimer l'objet actuellement en interaction
+		// pour ne plus pouvoir interagir avec lui
+		currentItem = null;
 	}
 }

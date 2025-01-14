@@ -25,12 +25,12 @@ margin = 0.1
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00412203, 0.101453, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00412203, 0.0092849, 0)
 shape = SubResource("CapsuleShape3D_x36yc")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="InteractifColliderPlayer" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractifColliderPlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00583258, 0.00363745, 0.00168933)
 shape = SubResource("BoxShape3D_dksu4")
 

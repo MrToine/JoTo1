@@ -1,0 +1,5 @@
+- Arbre de compétence minimal de type grimoire
+- Compétences bloquée en "nombre de jours" (Ex: JOUR 1 => tel compétences débloquées, JOUR 2 => tel compétences débloquées... etc)
+- Inventaire minimal sans accès menu (Uniquement ATH)
+- Le personnage ne peux pas sauter
+- Le personnage peux faire des esquives

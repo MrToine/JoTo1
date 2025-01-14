@@ -58,12 +58,12 @@ directional_shadow_max_distance = 40.0
 [node name="PlayerCtrl" parent="." node_paths=PackedStringArray("cameraPivot", "camera", "animationPlayer") instance=ExtResource("1_4v46x")]
 transform = Transform3D(-0.834358, 0, 0.551224, 0, 1, 0, -0.551224, 0, -0.834358, -1.36355, 0.801093, -0.998159)
 mouseSensivity = 0.2
-cameraPivot = NodePath("CamPivot")
-camera = NodePath("CamPivot/SpringArm3D/Camera3D")
 speed = 0.6
 extraSpeed = 1.0
 acceleration = 1.0
 jumpForce = 5.0
+cameraPivot = NodePath("CamPivot")
+camera = NodePath("CamPivot/SpringArm3D/Camera3D")
 animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 
 [node name="CollisionShape3D" parent="PlayerCtrl" index="1"]

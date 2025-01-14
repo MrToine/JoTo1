@@ -33,10 +33,12 @@ public partial class Character : CharacterBody3D
 	// Champs privés pour la gestion de la vélocité
 	protected Vector3 velocity;
 	protected float yVelocity;
+	public Vector3 self_position;
 
 	// Variable booléenne pour indiquer si le joueur peut rebondir
 	public bool bounce = false;  // Par défaut, le personnage ne peut pas rebondir
 
 	// Propriétés pour les points de vie, d'attaque et de défense
 	public int lifePoint { get; set; }
+
 }

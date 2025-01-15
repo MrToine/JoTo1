@@ -32,7 +32,7 @@ public partial class Player : Character
 
 	private new Vector3 self_position;
 
-	private Item currentItem;
+	private IInteractable _currentInteractable;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -210,20 +210,18 @@ public partial class Player : Character
 	}
 
 	private void InteractWithObject() {
-		if(currentItem != null) {
-			currentItem.Interact();
-		}
+		_currentInteractable?.Interact();
 	}
 
-	public void SetCurrentItem(Item item) {
+	public void SetCurrentInteractable(IInteractable interactable) {
 		// Permet de définir l'objet actuellement en interaction
 		// pour pouvoir interagir avec lui en appuyant sur une touche
-		currentItem = item;
+		_currentInteractable = interactable;
 	}
 
-	public void ClearCurrentItem() {
+	public void ClearCurrentInteractable() {
 		// Permet de supprimer l'objet actuellement en interaction
 		// pour ne plus pouvoir interagir avec lui
-		currentItem = null;
+		_currentInteractable = null;
 	}
 }

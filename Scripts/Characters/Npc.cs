@@ -17,10 +17,11 @@ public partial class Npc : Character, IInteractable
             return;
         }
         _dialogueManager.LoadDialogue(NpcName);
-        
+
         var area = GetNode<Area3D>("AreaCollider");
         area.Connect("body_entered", Callable.From((Node body) => _on_area_entered(body)));
         area.Connect("body_exited", Callable.From((Node body) => _on_area_exited(body)));
+        base._Ready();
     }
 
     public void StartDialogue() {
@@ -28,12 +29,7 @@ public partial class Npc : Character, IInteractable
         var dialogue = _dialogueManager.GetDialogue(NpcName, "start");
     
         if (dialogue != null) {
-            GD.Print($"[{dialogue.Speaker}] {dialogue.Text}");
-            if (dialogue.Choices != null) {
-                foreach (var choice in dialogue.Choices) {
-                    GD.Print($"- {choice}");
-                }
-            }
+            _dialogueManager.ShowDialogue(dialogue);
         } else {
             GD.PrintErr($"Le dialogue n'existe pas pour le PNJ {NpcName}");
         }

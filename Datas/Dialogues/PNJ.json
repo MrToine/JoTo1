@@ -1,0 +1,14 @@
+{
+    "start": {
+        "Id": "start",
+        "Speaker": "PNJ",
+        "Text": "Bonjour, aventurier ! Je suis un message avec choix",
+        "Choices": ["Comment ça va ?", "Au revoir."]
+    },
+    "farewell": {
+        "Id": "farewell",
+        "Speaker": "PNJ",
+        "Text": "Au revoir, aventurier ! Je suis un message sans choix",
+        "Choices": []
+    }
+}

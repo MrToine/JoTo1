@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Item: InteractableObject
+public partial class Item: InteractableObject, IInteractable
 {
     public override void _PhysicsProcess(double delta) {
         if(_isInteracting) {
@@ -23,14 +23,14 @@ public partial class Item: InteractableObject
         var player = body.GetParent();
         GD.Print(player);
         if (player is Player playerNode) {
-            playerNode.SetCurrentItem(this);
+            playerNode.SetCurrentInteractable(this);
         }
     }
 
     public void _on_area_exited(Node body) {
         var player = body.GetParent();
         if (player is Player playerNode) {
-            playerNode.ClearCurrentItem();
+            playerNode.ClearCurrentInteractable();
         }
     }
 }

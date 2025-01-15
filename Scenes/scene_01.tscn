@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsxga0was8lou"]
+[gd_scene load_steps=9 format=3 uid="uid://dsxga0was8lou"]
 
 [ext_resource type="PackedScene" uid="uid://dleag821dvixv" path="res://Assets/prefabs/Player.tscn" id="1_4v46x"]
 [ext_resource type="PackedScene" uid="uid://bc20015i3tufh" path="res://Assets/prefabs/Maps/ile_prefab.tscn" id="4_g2sfm"]
 [ext_resource type="PackedScene" uid="uid://0qmu46vy6uka" path="res://Assets/3d_models/Enemies/ManaGolem/ManaGolem.tscn" id="5_ncxvy"]
+[ext_resource type="Script" path="res://Scripts/System/DialogueManager.cs" id="5_xjpl0"]
 [ext_resource type="PackedScene" uid="uid://bgxbikwaq2ohk" path="res://Assets/Spells/EarthQuake/Earth_Quake.tscn" id="6_8hvfd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75ufa"]
@@ -69,9 +70,6 @@ animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 [node name="CollisionShape3D" parent="PlayerCtrl" index="1"]
 transform = Transform3D(0.856501, 0, 0.516145, 0, 1, 0, -0.516145, 0, 0.856501, 0.0041219, 0.0221751, -1.78814e-07)
 
-[node name="Area3D" parent="PlayerCtrl" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113753, 0)
-
 [node name="PlayerBase" parent="PlayerCtrl" index="3"]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.96046e-08, -0.111534, 0.123543)
 
@@ -97,6 +95,7 @@ bones/20/position = Vector3(-0.33595, 0.00251283, 1.32707)
 
 [node name="ManaGolem" parent="." instance=ExtResource("5_ncxvy")]
 transform = Transform3D(0.769065, 0, -0.639171, 0, 1, 0, 0.639171, 0, 0.769065, -2.00568, 0.542956, 1.32425)
+NpcName = "PNJ"
 
 [node name="[ManaGolem]Earth_Quake" parent="." instance=ExtResource("6_8hvfd")]
 transform = Transform3D(0.774116, 0, -0.633043, 0, 1, 0, 0.633043, 0, 0.774116, -2.17749, 0.553638, 1.66671)
@@ -125,6 +124,9 @@ bones/20/position = Vector3(-0.194521, 3.81399, 0.296592)
 
 [node name="Ile_Prefab" parent="." instance=ExtResource("4_g2sfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572805, -0.4709, -0.136242)
+
+[node name="DialogueManager" type="Node3D" parent="."]
+script = ExtResource("5_xjpl0")
 
 [editable path="PlayerCtrl"]
 [editable path="PlayerCtrl/PlayerBase"]

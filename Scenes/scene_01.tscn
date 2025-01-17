@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsxga0was8lou"]
+[gd_scene load_steps=11 format=3 uid="uid://dsxga0was8lou"]
 
 [ext_resource type="PackedScene" uid="uid://dleag821dvixv" path="res://Assets/prefabs/Player.tscn" id="1_4v46x"]
 [ext_resource type="PackedScene" uid="uid://bc20015i3tufh" path="res://Assets/prefabs/Maps/ile_prefab.tscn" id="4_g2sfm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/System/DialogueManager.cs" id="5_xjpl0"]
 [ext_resource type="PackedScene" uid="uid://bgxbikwaq2ohk" path="res://Assets/Spells/EarthQuake/Earth_Quake.tscn" id="6_8hvfd"]
 [ext_resource type="PackedScene" uid="uid://dr3es0ry0shjt" path="res://Assets/prefabs/UI/DialogueUI.tscn" id="6_w62nu"]
+[ext_resource type="PackedScene" uid="uid://buqgmoyak0fhj" path="res://Assets/prefabs/TESTS_A_SUPPRIMMER/item_interactif.tscn" id="7_rqsiu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75ufa"]
 sky_top_color = Color(0.754574, 0.76506, 0.888054, 1)
@@ -60,12 +61,12 @@ directional_shadow_max_distance = 40.0
 [node name="PlayerCtrl" parent="." node_paths=PackedStringArray("cameraPivot", "camera", "animationPlayer") groups=["game_elements"] instance=ExtResource("1_4v46x")]
 transform = Transform3D(-0.834358, 0, 0.551224, 0, 1, 0, -0.551224, 0, -0.834358, -1.36355, 0.801093, -0.998159)
 mouseSensivity = 0.2
+cameraPivot = NodePath("CamPivot")
+camera = NodePath("CamPivot/SpringArm3D/Camera3D")
 speed = 0.6
 extraSpeed = 1.0
 acceleration = 1.0
 jumpForce = 5.0
-cameraPivot = NodePath("CamPivot")
-camera = NodePath("CamPivot/SpringArm3D/Camera3D")
 animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 
 [node name="CamPivot" parent="PlayerCtrl" index="0" groups=["game_elements"]]
@@ -135,9 +136,15 @@ script = ExtResource("5_xjpl0")
 
 [node name="DialogueUI" parent="." instance=ExtResource("6_w62nu")]
 
+[node name="ItemInteractif" parent="." instance=ExtResource("7_rqsiu")]
+transform = Transform3D(0.499994, -0.00248708, 0, 0.00248708, 0.499994, 0, 0, 0, 0.5, -0.976256, 1.35723, 0)
+Name = "Item de base"
+Description = "rien"
+
 [connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
 
 [editable path="PlayerCtrl"]
 [editable path="PlayerCtrl/PlayerBase"]
 [editable path="ManaGolem"]
 [editable path="[ManaGolem]Earth_Quake"]
+[editable path="ItemInteractif"]

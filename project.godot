@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="JoTo1"
+config/tags=PackedStringArray("principal")
 run/main_scene="res://Scenes/scene_01.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"

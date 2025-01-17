@@ -9,7 +9,7 @@ public partial class Item: InteractableObject, IInteractable
             GD.Print("Nom de l'objet : " + Name);
             GD.Print("Parent de l'objet : " + GetParent().Name);
             // On supprime l'objet du monde
-            GetParent().QueueFree();
+            QueueFree();
             GD.Print("QueueFree() appelé sur l'objet : " + Name);
         }
     }

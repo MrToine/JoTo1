@@ -9,6 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_uy8bh"]
 
 [node name="ItemInteractif" type="Node3D"]
+script = ExtResource("1_av7qi")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 mass = 0.2
@@ -20,13 +21,10 @@ shape = SubResource("BoxShape3D_tcodn")
 mesh = SubResource("BoxMesh_1coyr")
 
 [node name="ColliderInteract" type="Area3D" parent="RigidBody3D"]
-script = ExtResource("1_av7qi")
-Name = "Item de test"
-Description = "Je ne suis qu'un item de test, destiné à être utilisé de manière abusive des milliers de fois sans jamais me plaindre."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/ColliderInteract"]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 shape = SubResource("BoxShape3D_uy8bh")
 
-[connection signal="area_entered" from="RigidBody3D/ColliderInteract" to="RigidBody3D/ColliderInteract" method="_on_area_entered"]
-[connection signal="area_exited" from="RigidBody3D/ColliderInteract" to="RigidBody3D/ColliderInteract" method="_on_area_exited"]
+[connection signal="area_entered" from="RigidBody3D/ColliderInteract" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="RigidBody3D/ColliderInteract" to="." method="_on_area_exited"]

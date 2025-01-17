@@ -20,6 +20,11 @@ public abstract partial class InteractableObject: Node3D
 
     protected bool _isInteracting = false;
 
+    public override void _Ready() {
+        
+        AddToGroup("game_elements");
+    }
+
     public void Interact() {
         if (!_isInteracting) {
             _isInteracting = true;

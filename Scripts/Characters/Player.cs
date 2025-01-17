@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class Player : Character
 {
@@ -27,6 +28,7 @@ public partial class Player : Character
 	[Export]Camera3D camera;
 
 	private bool isAttacking = false;
+	private bool isInDialogue = false; // Nouvelle propriété pour suivre l'état du dialogue
 	
 	private string currentAnimation = "";
 
@@ -175,7 +177,8 @@ public partial class Player : Character
 	}
 
 	private void Attack() {
-		if (!isAttacking) {
+		// Vérifie si le joueur n'est pas en dialogue avant de permettre l'attaque
+		if (!isAttacking && !isInDialogue) {
 			isAttacking = true;
 			PlayerAttackAnimation();
 		}
@@ -223,5 +226,16 @@ public partial class Player : Character
 		// Permet de supprimer l'objet actuellement en interaction
 		// pour ne plus pouvoir interagir avec lui
 		_currentInteractable = null;
+	}
+
+	// Méthodes publiques pour gérer l'état du dialogue
+	public void StartDialogue() {
+		isInDialogue = true;
+	}
+
+	public async void EndDialogue() {
+		// On fait un await de 100ms 
+		await Task.Delay(100);
+		isInDialogue = false;
 	}
 }

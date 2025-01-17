@@ -3,12 +3,32 @@
         "Id": "start",
         "Speaker": "PNJ",
         "Text": "Bonjour, aventurier ! Je suis un message avec choix",
-        "Choices": ["Comment ça va ?", "Au revoir."]
+        "Choices": {
+            "talk": "Comment ça va ?",
+            "farewell": "Au revoir."
+        }
+    },
+    "talk": {
+        "Id": "talk",
+        "Speaker": "PNJ",
+        "Text": "Je vais bien, merci ! Et toi ?",
+        "Choices": {
+            "gossips": "Très bien, merci. Vous avez entendu des rumeurs ces derniers temps ?",
+            "farewell": "Au revoir."
+        }
+    },
+    "gossips": {
+        "Id": "gossips",
+        "Speaker": "PNJ",
+        "Text": "Oui, j'ai entendu parler d'une créature étrange qui rôde dans les bois. On dit qu'elle est très dangereuse.",
+        "Choices": {
+            "farewell": "Merci pour l'information."
+        }
     },
     "farewell": {
         "Id": "farewell",
         "Speaker": "PNJ",
-        "Text": "Au revoir, aventurier ! Je suis un message sans choix",
-        "Choices": []
+        "Text": "Au revoir, aventurier !",
+        "Choices": {}
     }
 }

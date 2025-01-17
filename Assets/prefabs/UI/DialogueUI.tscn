@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr3es0ry0shjt"]
+
+[sub_resource type="Theme" id="Theme_1qk12"]
+default_font_size = 28
+
+[node name="DialogueUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 40.0
+offset_top = 825.0
+offset_right = 1885.0
+offset_bottom = 1048.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialogueText" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Je suis un texte d'essaie"
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1qk12")
+alignment = 2

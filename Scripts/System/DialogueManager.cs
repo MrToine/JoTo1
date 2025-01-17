@@ -84,8 +84,8 @@ public partial class DialogueManager : Node3D
             foreach (var choice in dialogue.Choices)
             {
                 var button = new Button();
-                button.Text = choice.Key;
-                button.Connect("pressed", Callable.From(() => OnChoiceSelected(choice.Value)));
+                button.Text = choice.Value;
+                button.Connect("pressed", Callable.From(() => OnChoiceSelected(choice.Key)));
                 _choicesContainer.AddChild(button);
             }
         }

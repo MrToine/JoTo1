@@ -8,19 +8,13 @@ public partial class DialogueManager : Node3D
     private Control _dialogueUI;
     private Label _dialogueText;
     private VBoxContainer _choicesContainer;
-
-    public override void _Ready()
-    {
-        _dialogueUI = GetNode<Control>("../DialogueUI");
-        _dialogueText = _dialogueUI.GetNode<Label>("Panel/VBoxContainer/DialogueText");
-        _choicesContainer = _dialogueUI.GetNode<VBoxContainer>("Panel/VBoxContainer/ChoicesContainer");
-        _dialogueUI.Visible = false;
-        GD.Print("DialogueManager est prêt à l'emploi.");
-    }
+    private Camera3D _camera;
+    private string _currentNpcName;
 
     // Charge les dialogues pour un PNJ spécifique
     public void LoadDialogue(string npcName)
     {
+        _currentNpcName = npcName;
         string path = $"res://Datas/Dialogues/{npcName}.json";
         if (!FileAccess.FileExists(path))
         {
@@ -55,16 +49,24 @@ public partial class DialogueManager : Node3D
 
     public void ShowDialogue(Dialogue dialogue)
     {
-        // On fige la camera sans mettre le jeu en pause
-        foreach (Node node in GetTree().GetNodesInGroup("game_elements"))
+        var player = GetNode<Player>("../PlayerCtrl");
+        if (player != null)
         {
-            if (node is Control control)
-            {
-                control.SetProcessInput(false);
-            }
+            player.StartDialogue();
+            player.SetProcessInput(false);
+            player.SetProcess(false);
+            player.SetPhysicsProcess(false);
         }
 
-        // On laisse la souris visible
+        // Désactive le pivot de la caméra
+        var camPivot = GetNode<Node3D>("../PlayerCtrl/CamPivot");
+        if (camPivot != null)
+        {
+            camPivot.SetProcessInput(false);
+            camPivot.SetProcess(false);
+        }
+
+        // Active le mode souris
         Input.MouseMode = Input.MouseModeEnum.Visible;
 
         _dialogueText.Text = dialogue.Text;
@@ -73,12 +75,19 @@ public partial class DialogueManager : Node3D
             child.QueueFree();
         }
 
-        foreach (var choice in dialogue.Choices)
-        {
+        if (dialogue.Choices.Count == 0) {
             var button = new Button();
-            button.Text = choice;
-            button.Connect("pressed", Callable.From(() => OnChoiceSelected(choice)));
+            button.Text = "Fermer";
+            button.Connect("pressed", Callable.From(() => HideDialogue()));
             _choicesContainer.AddChild(button);
+        } else {
+            foreach (var choice in dialogue.Choices)
+            {
+                var button = new Button();
+                button.Text = choice.Key;
+                button.Connect("pressed", Callable.From(() => OnChoiceSelected(choice.Value)));
+                _choicesContainer.AddChild(button);
+            }
         }
 
         _dialogueUI.Visible = true;
@@ -86,7 +95,24 @@ public partial class DialogueManager : Node3D
 
     public void HideDialogue()
     {
-        // On défige la camera
+        var player = GetNode<Player>("../PlayerCtrl");
+        if (player != null)
+        {
+            player.EndDialogue();
+            player.SetProcessInput(true);
+            player.SetProcess(true);
+            player.SetPhysicsProcess(true);
+        }
+
+        // Réactive le pivot de la caméra
+        var camPivot = GetNode<Node3D>("../PlayerCtrl/CamPivot");
+        if (camPivot != null)
+        {
+            camPivot.SetProcessInput(true);
+            camPivot.SetProcess(true);
+        }
+
+        // Réactive tous les autres éléments de jeu
         foreach (Node node in GetTree().GetNodesInGroup("game_elements"))
         {
             if (node is Control control)
@@ -95,15 +121,63 @@ public partial class DialogueManager : Node3D
             }
         }
         
-        // On laisse la souris invisible
+        // Réactive complètement la caméra
+        if (_camera != null)
+        {
+            _camera.SetProcessInput(true);
+            _camera.SetProcessMode(ProcessModeEnum.Inherit);
+        }
+
+        // Recapture la souris
         Input.MouseMode = Input.MouseModeEnum.Captured;
 
         _dialogueUI.Visible = false;
     }
 
-    private void OnChoiceSelected(string choice)
+    private void OnChoiceSelected(string nextDialogueId)
     {
-        GD.Print($"Choix sélectionné : {choice}");
-        HideDialogue();
+        GD.Print($"Choix sélectionné : {nextDialogueId}");
+        var nextDialogue = GetDialogue(_currentNpcName, nextDialogueId);
+        if (nextDialogue != null)
+        {
+            ShowDialogue(nextDialogue);
+        }
+        else
+        {
+            HideDialogue();
+        }
+    }
+
+    public void _on_dialogue_ui_ready()
+    {
+        _dialogueUI = GetNode<Control>("../DialogueUI");
+        if (_dialogueUI == null)
+        {
+            GD.PrintErr("DialogueUI not found!");
+            return;
+        }
+
+        _dialogueText = _dialogueUI.GetNode<Label>("Panel/VBoxContainer/DialogueText");
+        if (_dialogueText == null)
+        {
+            GD.PrintErr("DialogueText not found!");
+            return;
+        }
+
+        _choicesContainer = _dialogueUI.GetNode<VBoxContainer>("Panel/VBoxContainer/ChoicesContainer");
+        if (_choicesContainer == null)
+        {
+            GD.PrintErr("ChoicesContainer not found!");
+            return;
+        }
+
+        _camera = GetNode<Camera3D>("../PlayerCtrl/CamPivot/SpringArm3D/Camera3D");
+        if (_camera == null)
+        {
+            GD.PrintErr("Camera3D not found!");
+            return;
+        }
+
+        _dialogueUI.Visible = false;
     }
 }

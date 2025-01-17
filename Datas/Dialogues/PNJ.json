@@ -3,12 +3,23 @@
         "Id": "start",
         "Speaker": "PNJ",
         "Text": "Bonjour, aventurier ! Je suis un message avec choix",
-        "Choices": ["Comment ça va ?", "Au revoir."]
+        "Choices": {
+            "Comment ça va ?": "talk", 
+            "Au revoir.": "farewell"
+        }
+    },
+    "talk": {
+        "Id": "talk",
+        "Speaker": "PNJ",
+        "Text": "Je vais bien, merci ! Et toi ?",
+        "Choices": {
+            "Au revoir.": "farewell"
+        }
     },
     "farewell": {
         "Id": "farewell",
         "Speaker": "PNJ",
         "Text": "Au revoir, aventurier ! Je suis un message sans choix",
-        "Choices": []
+        "Choices": {}
     }
 }

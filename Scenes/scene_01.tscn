@@ -68,6 +68,10 @@ acceleration = 1.0
 jumpForce = 5.0
 animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 
+[node name="CamPivot" parent="PlayerCtrl" index="0" groups=["game_elements"]]
+
+[node name="Camera3D" parent="PlayerCtrl/CamPivot/SpringArm3D" index="0" groups=["game_elements"]]
+
 [node name="CollisionShape3D" parent="PlayerCtrl" index="1"]
 transform = Transform3D(0.856501, 0, 0.516145, 0, 1, 0, -0.516145, 0, 0.856501, 0.0041219, 0.0221751, -1.78814e-07)
 
@@ -130,6 +134,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572805, -0.4709, -0.136242
 script = ExtResource("5_xjpl0")
 
 [node name="DialogueUI" parent="." instance=ExtResource("6_w62nu")]
+
+[connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
 
 [editable path="PlayerCtrl"]
 [editable path="PlayerCtrl/PlayerBase"]

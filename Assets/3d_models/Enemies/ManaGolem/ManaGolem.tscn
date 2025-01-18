@@ -10,7 +10,6 @@
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_c2nyt")
-NpcName = "ManaGolem"
 
 [node name="Mana_Golem" parent="." instance=ExtResource("1_xu1lv")]
 

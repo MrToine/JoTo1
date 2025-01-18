@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsxga0was8lou"]
+[gd_scene load_steps=12 format=3 uid="uid://dsxga0was8lou"]
 
 [ext_resource type="PackedScene" uid="uid://dleag821dvixv" path="res://Assets/prefabs/Player.tscn" id="1_4v46x"]
+[ext_resource type="Script" path="res://Scripts/World/Scene.cs" id="1_vqsd3"]
 [ext_resource type="PackedScene" uid="uid://bc20015i3tufh" path="res://Assets/prefabs/Maps/ile_prefab.tscn" id="4_g2sfm"]
 [ext_resource type="PackedScene" uid="uid://0qmu46vy6uka" path="res://Assets/3d_models/Enemies/ManaGolem/ManaGolem.tscn" id="5_ncxvy"]
 [ext_resource type="Script" path="res://Scripts/System/DialogueManager.cs" id="5_xjpl0"]
@@ -36,6 +37,7 @@ adjustment_contrast = 1.12
 adjustment_saturation = 0.88
 
 [node name="Scene01" type="Node3D"]
+script = ExtResource("1_vqsd3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["game_elements"]]
 environment = SubResource("Environment_jktho")
@@ -140,6 +142,7 @@ script = ExtResource("5_xjpl0")
 transform = Transform3D(0.499994, -0.00248708, 0, 0.00248708, 0.499994, 0, 0, 0, 0.5, 1.12784, 0.807537, 1.85897)
 Name = "Item de base"
 Description = "rien"
+ChangeHistoryStep = 2
 
 [connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
 

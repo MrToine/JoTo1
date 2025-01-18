@@ -28,6 +28,12 @@ public partial class DialogueManager : Node3D
             string jsonText = file.GetAsText();
             var dialogues = JsonSerializer.Deserialize<Dictionary<string, Dialogue>>(jsonText);
             _npcDialogues[npcName] = dialogues;
+
+            // Debugging: Print the dialogues to verify ConditionStep values
+            foreach (var dialogue in dialogues)
+            {
+                GD.Print($"Dialogue ID: {dialogue.Key}, ConditionStep: {dialogue.Value.ConditionStep}");
+            }
         }
         catch (System.Exception e)
         {
@@ -40,7 +46,12 @@ public partial class DialogueManager : Node3D
     {
         if (_npcDialogues.ContainsKey(npcName) && _npcDialogues[npcName].ContainsKey(dialogueId))
         {
-            return _npcDialogues[npcName][dialogueId];
+            var dialogue = _npcDialogues[npcName][dialogueId];
+            GD.Print($"Tentative de récupération pour le dialogue {dialogueId} du PNJ {npcName} avec ConditionStep {dialogue.ConditionStep} et CurrentStoryStep {GlobalState.Instance.CurrentStoryStep}");
+            if (dialogue.ConditionStep <= GlobalState.Instance.CurrentStoryStep) {
+                GD.Print($"Dialogue {dialogueId} récupéré pour le PNJ {npcName}.");
+                return dialogue;
+            }
         }
 
         GD.PrintErr($"Dialogue {dialogueId} introuvable pour le PNJ {npcName}.");
@@ -75,19 +86,23 @@ public partial class DialogueManager : Node3D
             child.QueueFree();
         }
 
-        if (dialogue.Choices.Count == 0) {
-            var button = new Button();
-            button.Text = "Fermer";
-            button.Connect("pressed", Callable.From(() => HideDialogue()));
-            _choicesContainer.AddChild(button);
-        } else {
-            foreach (var choice in dialogue.Choices)
-            {
+        bool hasValidChoices = false;
+        foreach (var choice in dialogue.Choices) {
+            var nextDialogue = GetDialogue(_currentNpcName, choice.Key);
+            if (nextDialogue != null) {
                 var button = new Button();
                 button.Text = choice.Value;
                 button.Connect("pressed", Callable.From(() => OnChoiceSelected(choice.Key)));
                 _choicesContainer.AddChild(button);
+                hasValidChoices = true;
             }
+        }
+
+        if (!hasValidChoices) {
+            var button = new Button();
+            button.Text = "Fermer";
+            button.Connect("pressed", Callable.From(() => HideDialogue()));
+            _choicesContainer.AddChild(button);
         }
 
         _dialogueUI.Visible = true;

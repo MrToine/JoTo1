@@ -1,6 +1,7 @@
 {
     "start": {
         "Id": "start",
+        "conditionStep": 1,
         "Speaker": "PNJ",
         "Text": "Bonjour, aventurier ! Je suis un message avec choix",
         "Choices": {
@@ -10,6 +11,7 @@
     },
     "talk": {
         "Id": "talk",
+        "conditionStep": 1,
         "Speaker": "PNJ",
         "Text": "Je vais bien, merci ! Et toi ?",
         "Choices": {
@@ -19,6 +21,7 @@
     },
     "gossips": {
         "Id": "gossips",
+        "conditionStep": 2,
         "Speaker": "PNJ",
         "Text": "Oui, j'ai entendu parler d'une créature étrange qui rôde dans les bois. On dit qu'elle est très dangereuse.",
         "Choices": {
@@ -27,6 +30,7 @@
     },
     "farewell": {
         "Id": "farewell",
+        "conditionStep": 1,
         "Speaker": "PNJ",
         "Text": "Au revoir, aventurier !",
         "Choices": {}

@@ -10,12 +10,16 @@ public partial class Npc : Character, IInteractable
 
     public override void _Ready()
     {
+        // Gestion animationtree
+        // GetNode<AnimationTree>("../[ManaGolem]EarthQuake/AnimationPlayer/AnimationTree").Active = false;
+
         _dialogueManager = GetNode<DialogueManager>("../DialogueManager");
         if (_dialogueManager == null)
         {
             GD.Print("DialogueManager not found!");
             return;
         }
+        
         _dialogueManager.LoadDialogue(NpcName);
 
         var area = GetNode<Area3D>("AreaCollider");

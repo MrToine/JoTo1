@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ce012m3bhowtf"]
+
+[ext_resource type="Script" path="res://Scripts/World/Scene.cs" id="1_uro6q"]
+[ext_resource type="PackedScene" uid="uid://bc20015i3tufh" path="res://Assets/prefabs/Maps/ile_prefab.tscn" id="2_wk3in"]
+
+[node name="Scene02" type="Node3D"]
+script = ExtResource("1_uro6q")
+
+[node name="Ile_Prefab" parent="." instance=ExtResource("2_wk3in")]
+
+[node name="SpawnFromScene01" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29297, 1.00128, 1.80956)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsxga0was8lou"]
+[gd_scene load_steps=15 format=3 uid="uid://dsxga0was8lou"]
 
 [ext_resource type="PackedScene" uid="uid://dleag821dvixv" path="res://Assets/prefabs/Player.tscn" id="1_4v46x"]
 [ext_resource type="Script" path="res://Scripts/World/Scene.cs" id="1_vqsd3"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bgxbikwaq2ohk" path="res://Assets/Spells/EarthQuake/Earth_Quake.tscn" id="6_8hvfd"]
 [ext_resource type="PackedScene" uid="uid://dr3es0ry0shjt" path="res://Assets/prefabs/UI/DialogueUI.tscn" id="6_w62nu"]
 [ext_resource type="PackedScene" uid="uid://buqgmoyak0fhj" path="res://Assets/prefabs/TESTS_A_SUPPRIMMER/item_interactif.tscn" id="7_rqsiu"]
+[ext_resource type="Script" path="res://Scripts/World/Teleport.cs" id="9_6xivp"]
+[ext_resource type="PackedScene" uid="uid://ce012m3bhowtf" path="res://Scenes/scene_02.tscn" id="10_15x31"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_75ufa"]
 sky_top_color = Color(0.754574, 0.76506, 0.888054, 1)
@@ -35,6 +37,8 @@ glow_hdr_threshold = 3.0
 adjustment_enabled = true
 adjustment_contrast = 1.12
 adjustment_saturation = 0.88
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwcah"]
 
 [node name="Scene01" type="Node3D"]
 script = ExtResource("1_vqsd3")
@@ -144,7 +148,17 @@ Name = "Item de base"
 Description = "rien"
 ChangeHistoryStep = 2
 
+[node name="SpawnToScene02" type="Area3D" parent="."]
+transform = Transform3D(0.824373, 0, -0.566047, 0, 1, 0, 0.566047, 0, 0.824373, 0, 0.62769, 0.417194)
+script = ExtResource("9_6xivp")
+DestinationScenePath = ExtResource("10_15x31")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpawnToScene02"]
+transform = Transform3D(0.0805835, 0, 0, 0, 0.813491, 0, 0, 0, 0.458077, -0.107172, 0, 0.0735888)
+shape = SubResource("BoxShape3D_pwcah")
+
 [connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
+[connection signal="area_entered" from="SpawnToScene02" to="SpawnToScene02" method="_on_area_entered"]
 
 [editable path="PlayerCtrl"]
 [editable path="PlayerCtrl/PlayerBase"]

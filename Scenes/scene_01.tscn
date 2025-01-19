@@ -58,47 +58,6 @@ directional_shadow_split_1 = 0.06
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 40.0
 
-[node name="PlayerCtrl" parent="." node_paths=PackedStringArray("cameraPivot", "camera", "animationPlayer") groups=["game_elements"] instance=ExtResource("1_4v46x")]
-transform = Transform3D(-0.834358, 0, 0.551224, 0, 1, 0, -0.551224, 0, -0.834358, -1.36355, 0.801093, -0.998159)
-mouseSensivity = 0.2
-cameraPivot = NodePath("CamPivot")
-camera = NodePath("CamPivot/SpringArm3D/Camera3D")
-speed = 0.6
-extraSpeed = 1.0
-acceleration = 1.0
-jumpForce = 5.0
-animationPlayer = NodePath("PlayerBase/AnimationPlayer")
-
-[node name="CamPivot" parent="PlayerCtrl" index="0" groups=["game_elements"]]
-
-[node name="Camera3D" parent="PlayerCtrl/CamPivot/SpringArm3D" index="0" groups=["game_elements"]]
-
-[node name="CollisionShape3D" parent="PlayerCtrl" index="1"]
-transform = Transform3D(0.856501, 0, 0.516145, 0, 1, 0, -0.516145, 0, 0.856501, 0.0041219, 0.0221751, -1.78814e-07)
-
-[node name="PlayerBase" parent="PlayerCtrl" index="3"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -5.96046e-08, -0.111534, 0.123543)
-
-[node name="Skeleton3D" parent="PlayerCtrl/PlayerBase/Armature" index="0"]
-bones/1/position = Vector3(-3.18157e-07, -2.47499e-07, 1.33403)
-bones/2/rotation = Quaternion(0.0889262, 1.50194e-07, 2.37691e-08, 0.996038)
-bones/3/rotation = Quaternion(0.0856282, -9.65414e-08, 1.5154e-08, 0.996327)
-bones/4/rotation = Quaternion(-0.79788, -0.134989, 0.587109, -0.0216665)
-bones/5/rotation = Quaternion(0.21394, -0.671056, 0.325952, 0.63061)
-bones/6/rotation = Quaternion(0.839806, -0.243989, 0.483661, -0.0355878)
-bones/7/rotation = Quaternion(0.203043, 0.677001, -0.309349, 0.636197)
-bones/8/rotation = Quaternion(1.52218e-07, 0.152533, 0.988298, -1.45205e-06)
-bones/9/rotation = Quaternion(1.30723e-06, 0.976979, -0.213336, 5.97651e-06)
-bones/10/rotation = Quaternion(-0.673907, 3.88231e-07, 1.46881e-06, 0.738816)
-bones/11/rotation = Quaternion(1.4183e-07, 0.0436518, 0.999047, 1.8027e-06)
-bones/12/rotation = Quaternion(-1.57229e-06, 0.965367, -0.260897, -6.53928e-06)
-bones/13/rotation = Quaternion(-0.781786, 7.31534e-07, -3.55143e-06, 0.623547)
-bones/14/position = Vector3(0.474366, 0.693628, 1.73215)
-bones/15/position = Vector3(0.299358, -0.118237, 1.33759)
-bones/16/position = Vector3(0.0800732, -0.118005, 0.669868)
-bones/18/position = Vector3(-0.102058, 0.0594601, 0.669868)
-bones/20/position = Vector3(-0.33595, 0.00251283, 1.32707)
-
 [node name="ManaGolem" parent="." groups=["game_elements"] instance=ExtResource("5_ncxvy")]
 transform = Transform3D(0.769065, 0, -0.639171, 0, 1, 0, 0.639171, 0, 0.769065, -2.00568, 0.542956, 1.32425)
 NpcName = "PNJ"
@@ -107,6 +66,7 @@ NpcName = "PNJ"
 transform = Transform3D(0.774116, 0, -0.633043, 0, 1, 0, 0.633043, 0, 0.774116, -2.17749, 0.553638, 1.66671)
 
 [node name="Skeleton3D" parent="[ManaGolem]Earth_Quake/Armature" index="0"]
+bones/0/position = Vector3(8.67091e-16, 3.90503, 1.70694e-07)
 bones/1/position = Vector3(0.180514, 5.33444, 0.159363)
 bones/2/position = Vector3(0.103021, 5.38365, 0.413394)
 bones/3/position = Vector3(-0.0828717, 5.23226, 0.0369234)
@@ -141,10 +101,11 @@ transform = Transform3D(0.499994, -0.00248708, 0, 0.00248708, 0.499994, 0, 0, 0,
 Name = "Item de base"
 Description = "rien"
 
+[node name="PlayerCtrl" parent="." instance=ExtResource("1_4v46x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559814, 1.27328)
+
 [connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
 
-[editable path="PlayerCtrl"]
-[editable path="PlayerCtrl/PlayerBase"]
 [editable path="ManaGolem"]
 [editable path="[ManaGolem]Earth_Quake"]
 [editable path="ItemInteractif"]

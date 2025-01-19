@@ -104,11 +104,15 @@ Name = "Item de base"
 Description = "rien"
 ChangeHistoryStep = 2
 
-[node name="PlayerCtrl" parent="." instance=ExtResource("1_4v46x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.559814, 1.27328)
+[node name="PlayerCtrl" parent="." node_paths=PackedStringArray("animationPlayer") instance=ExtResource("1_4v46x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57377, 1.27328)
+gravity = 1.0
+animationPlayer = NodePath("PlayerBase/AnimationPlayer")
 
 [connection signal="ready" from="DialogueUI" to="DialogueManager" method="_on_dialogue_ui_ready"]
 
 [editable path="ManaGolem"]
 [editable path="[ManaGolem]Earth_Quake"]
 [editable path="ItemInteractif"]
+[editable path="PlayerCtrl"]
+[editable path="PlayerCtrl/PlayerBase"]

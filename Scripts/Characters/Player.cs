@@ -41,7 +41,7 @@ public partial class Player : Character
 	{
 		/* Récupérer le noeud Camera3D et le noeud Node3D associé à la caméra au lancement du jeu */
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animationPlayer.Play("Inactif");
+		animationPlayer.Play("Static");
 
 	}
 
@@ -169,9 +169,9 @@ public partial class Player : Character
 
 		if(!isAttacking) {
 			if(direction != new Vector3(0,0,0) && IsOnFloor()) {
-				PlayerAnimation("Marche");
+				PlayerAnimation("Walk");
 			}else if(direction == new Vector3(0, 0, 0) && IsOnFloor()) {
-				animationPlayer.Play("Inactif");
+				animationPlayer.Play("Static");
 			}
 		}
 	}

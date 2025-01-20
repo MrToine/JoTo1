@@ -13,7 +13,7 @@ Leur conflit fit rage, chaque dieu libérant sa puissance sans retenue, transfor
 
 Dans un ultime acte de défi, leurs essences, projetées avec une intensité sans précédent, se mêlèrent en une seule explosion d’énergie. Ce qui devait être leur triomphe devint leur chute. Une force imprévisible et instable prit forme, née de leur désaccord fondamental.
 
-**Le Chaos**, né de la collision des quatre forces primordiales, déchaîna une vague de destruction sans pareille. Ses vagues dévastatrices engloutirent des royaumes, ses flammes anéantirent les cités, et ses tempêtes ravagèrent la nature elle-même. Le monde, une fois florissant et vivant, se retrouva plongé dans les ténèbres et le désespoir, menaçant de s’effondrer sous l’emprise de cette entité incontrôlable.
+**Le Chaos**, né de la collision des quatre forces primordiales, déchaîna une vague de destruction sans pareille. Ses vagues dévastatrices engloutirent des royaumes, ses flammes anéantirent les cités, et ses tempêtes ravagèrent la nature elle-même. Le monde, florissant et vivant, se retrouva plongé dans les ténèbres et le désespoir, menaçant de s’effondrer sous l’emprise de cette entité incontrôlable.
 
 ***
 

@@ -41,7 +41,7 @@ public partial class Player : Character
 	{
 		/* Récupérer le noeud Camera3D et le noeud Node3D associé à la caméra au lancement du jeu */
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		animationPlayer.Play("Inactif");
+		animationPlayer.Play("Static_Animation");
 
 	}
 
@@ -82,16 +82,16 @@ public partial class Player : Character
 		Vector3 direction = new Vector3(0, 0, 0);
 
 		if(Input.IsActionPressed("move_up")) {
-			direction -= Transform.Basis.Z;
+			direction += Transform.Basis.X;
 		}
 		if(Input.IsActionPressed("move_down")) {
-			direction += Transform.Basis.Z;
-		}
-		if(Input.IsActionPressed("move_left")) {
 			direction -= Transform.Basis.X;
 		}
+		if(Input.IsActionPressed("move_left")) {
+			direction -= Transform.Basis.Z;
+		}
 		if(Input.IsActionPressed("move_right")) {
-			direction += Transform.Basis.X;
+			direction += Transform.Basis.Z;
 		}
 
 		if(Input.IsActionJustPressed("attack")) {
@@ -169,9 +169,9 @@ public partial class Player : Character
 
 		if(!isAttacking) {
 			if(direction != new Vector3(0,0,0) && IsOnFloor()) {
-				PlayerAnimation("Marche");
+				PlayerAnimation("Walk");
 			}else if(direction == new Vector3(0, 0, 0) && IsOnFloor()) {
-				animationPlayer.Play("Inactif");
+				animationPlayer.Play("Static_Animation");
 			}
 		}
 	}

@@ -171,7 +171,8 @@ public partial class Player : Character
 			if(direction != new Vector3(0,0,0) && IsOnFloor()) {
 				PlayerAnimation("Walk");
 			}else if(direction == new Vector3(0, 0, 0) && IsOnFloor()) {
-				animationPlayer.Play("Static_Animation");
+
+				animationPlayer.Play("Idle_Think");
 			}
 		}
 	}

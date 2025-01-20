@@ -28,12 +28,6 @@ public partial class DialogueManager : Node3D
             string jsonText = file.GetAsText();
             var dialogues = JsonSerializer.Deserialize<Dictionary<string, Dialogue>>(jsonText);
             _npcDialogues[npcName] = dialogues;
-
-            // Debugging: Print the dialogues to verify ConditionStep values
-            foreach (var dialogue in dialogues)
-            {
-                GD.Print($"Dialogue ID: {dialogue.Key}, ConditionStep: {dialogue.Value.ConditionStep}");
-            }
         }
         catch (System.Exception e)
         {
@@ -47,9 +41,7 @@ public partial class DialogueManager : Node3D
         if (_npcDialogues.ContainsKey(npcName) && _npcDialogues[npcName].ContainsKey(dialogueId))
         {
             var dialogue = _npcDialogues[npcName][dialogueId];
-            GD.Print($"Tentative de récupération pour le dialogue {dialogueId} du PNJ {npcName} avec ConditionStep {dialogue.ConditionStep} et CurrentStoryStep {GlobalState.Instance.CurrentStoryStep}");
             if (dialogue.ConditionStep <= GlobalState.Instance.CurrentStoryStep) {
-                GD.Print($"Dialogue {dialogueId} récupéré pour le PNJ {npcName}.");
                 return dialogue;
             }
         }
@@ -151,7 +143,6 @@ public partial class DialogueManager : Node3D
 
     private void OnChoiceSelected(string nextDialogueId)
     {
-        GD.Print($"Choix sélectionné : {nextDialogueId}");
         var nextDialogue = GetDialogue(_currentNpcName, nextDialogueId);
         if (nextDialogue != null)
         {

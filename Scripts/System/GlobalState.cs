@@ -21,6 +21,5 @@ public partial class GlobalState : Node
     public override void _Ready()
     {
         SetProcess(false);
-        GD.Print("Le CurrentStoryStep est à " + CurrentStoryStep);
     }
 }
